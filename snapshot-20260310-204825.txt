@@ -1,0 +1,126 @@
+- document:
+  - navigation "Accès rapide" [ref=e1]:
+    - list:
+      - listitem:
+        - link "Contenu" [ref=e2]:
+          - /url: "#main-content"
+  - banner:
+    - paragraph: MINISTÈRE DE L'EUROPE ET DES AFFAIRES ÉTRANGÈRES
+    - paragraph: Section consulaire de l'Ambassade de France en Irlande
+    - button [ref=e3]
+  - main:
+    - button "" [ref=e4]
+    - heading "Créneaux, Étape 3 sur 6" [ref=e5] [level=1]
+    - progressbar
+    - img
+    - progressbar
+    - img
+    - progressbar
+    - img
+    - progressbar
+    - img
+    - progressbar
+    - img
+    - progressbar
+    - img
+    - heading "Visas (Durée 15 minutes)" [ref=e6] [level=2]
+    - button "" [ref=e7]
+    - button "Formulaire accessible pour la sélection de rendez-vous" [ref=e8]:
+      - img
+    - paragraph: Vous pouvez sélectionner jusqu'à 1 place(s)
+    - text: mars 2026 L M M J V S D
+    - button "lundi 23 février 2026" [ref=e9] [disabled]: "23"
+    - button "mardi 24 février 2026" [ref=e10] [disabled]: "24"
+    - button "mercredi 25 février 2026" [ref=e11] [disabled]: "25"
+    - button "jeudi 26 février 2026" [ref=e12] [disabled]: "26"
+    - button "vendredi 27 février 2026" [ref=e13] [disabled]: "27"
+    - button "samedi 28 février 2026" [ref=e14] [disabled]: "28"
+    - button "dimanche 1 mars 2026" [ref=e15] [disabled]: "1"
+    - button "lundi 2 mars 2026" [ref=e16] [disabled]: "2"
+    - button "mardi 3 mars 2026" [ref=e17] [disabled]: "3"
+    - button "mercredi 4 mars 2026" [ref=e18] [disabled]: "4"
+    - button "jeudi 5 mars 2026" [ref=e19] [disabled]: "5"
+    - button "vendredi 6 mars 2026" [ref=e20] [disabled]: "6"
+    - button "samedi 7 mars 2026" [ref=e21] [disabled]: "7"
+    - button "dimanche 8 mars 2026" [ref=e22] [disabled]: "8"
+    - button "lundi 9 mars 2026" [ref=e23] [disabled]: "9"
+    - button "mardi 10 mars 2026" [ref=e24]: "10"
+    - button "mercredi 11 mars 2026" [ref=e25] [disabled]: "11"
+    - button "jeudi 12 mars 2026" [ref=e26] [disabled]: "12"
+    - button "vendredi 13 mars 2026" [ref=e27] [disabled]: "13"
+    - button "samedi 14 mars 2026" [ref=e28] [disabled]: "14"
+    - button "dimanche 15 mars 2026" [ref=e29] [disabled]: "15"
+    - button "lundi 16 mars 2026" [ref=e30] [disabled]: "16"
+    - button "mardi 17 mars 2026" [ref=e31] [disabled]: "17"
+    - button "mercredi 18 mars 2026" [ref=e32] [disabled]: "18"
+    - button "jeudi 19 mars 2026" [ref=e33] [disabled]: "19"
+    - button "vendredi 20 mars 2026" [ref=e34] [disabled]: "20"
+    - button "samedi 21 mars 2026" [ref=e35] [disabled]: "21"
+    - button "dimanche 22 mars 2026" [ref=e36] [disabled]: "22"
+    - button "lundi 23 mars 2026" [ref=e37] [disabled]: "23"
+    - button "mardi 24 mars 2026" [ref=e38] [disabled]: "24"
+    - button "mercredi 25 mars 2026" [ref=e39] [disabled]: "25"
+    - button "jeudi 26 mars 2026" [ref=e40] [disabled]: "26"
+    - button "vendredi 27 mars 2026" [ref=e41] [disabled]: "27"
+    - button "samedi 28 mars 2026" [ref=e42] [disabled]: "28"
+    - button "dimanche 29 mars 2026" [ref=e43] [disabled]: "29"
+    - button "lundi 30 mars 2026" [ref=e44] [disabled]: "30"
+    - button "mardi 31 mars 2026" [ref=e45] [disabled]: "31"
+    - button "mercredi 1 avril 2026" [ref=e46] [disabled]: "1"
+    - button "jeudi 2 avril 2026" [ref=e47] [disabled]: "2"
+    - button "vendredi 3 avril 2026" [ref=e48] [disabled]: "3"
+    - button "samedi 4 avril 2026" [ref=e49] [disabled]: "4"
+    - button "dimanche 5 avril 2026" [ref=e50] [disabled]: "5"
+    - button [ref=e51] [nth=1]:
+      - img
+    - button [ref=e52] [nth=2]:
+      - img
+    - heading "Mardi 10 Mars" [ref=e53] [level=4]
+    - paragraph: "Fuseau horaire : Europe/Dublin (UTC+0)"
+    - paragraph: Aucune réservation disponible pour ce jour
+    - button "Valider le calendrier 1/1" [ref=e54]
+  - paragraph: Solution de rendez-vous développée par
+  - link "Aller à la page d'accueil" [ref=e55]:
+    - /url: https://troov.com
+    - img "Troov"
+  - contentinfo:
+    - paragraph: MINISTÈRE DE L'EUROPE ET DES AFFAIRES ÉTRANGÈRES
+    - list:
+      - listitem:
+        - link "Redirection sur le site legifrance.gouv.fr" [ref=e56]:
+          - /url: https://legifrance.gouv.fr
+          - text: legifrance.gouv.fr
+      - listitem:
+        - link "Redirection sur le site gouvernement.fr" [ref=e57]:
+          - /url: https://gouvernement.fr
+          - text: gouvernement.fr
+      - listitem:
+        - link "Redirection sur le site service-public.fr" [ref=e58]:
+          - /url: https://service-public.fr
+          - text: service-public.fr
+      - listitem:
+        - link "Redirection sur le site data.gouv.fr" [ref=e59]:
+          - /url: https://data.gouv.fr
+          - text: data.gouv.fr
+    - list:
+      - listitem:
+        - link "Consulter le certificat d'accessibilité" [ref=e60]:
+          - /url: /accessibility-certificate
+          - text: "Accessibilité : partiellement conforme"
+      - listitem:
+        - link "Consulter les mentions légales" [ref=e61]:
+          - /url: /legals
+          - text: Mentions légales
+      - listitem:
+        - link "Consulter la politique de confidentialité" [ref=e62]:
+          - /url: /confidentiality
+          - text: Données personnelles et gestion des cookies
+      - listitem:
+        - link "Consulter les conditions générales d'utilisation" [ref=e63]:
+          - /url: /cgu
+          - text: Conditions générales d'utilisation
+    - paragraph:
+      - text: Sauf mention contraire, tous les contenus de ce site sont sous
+      - link "Consulter la licence ouverte etalab" [ref=e64]:
+        - /url: https://github.com/etalab/licence-ouverte/blob/master/LO.md
+        - text: licence etalab-2.0
