@@ -11,8 +11,8 @@ from email.mime.base import MIMEBase
 from email import encoders
 
 # ============ 邮件配置 ============
-SENDER_EMAIL = "yourmail@gmail.com"
-RECEIVER_EMAIL = "youremail@gmail.com"
+SENDER_EMAIL = "your@gmail.com"
+RECEIVER_EMAIL = "your@gmail.com"
 APP_PASSWORD = "yourpassword"
 
 
@@ -34,6 +34,10 @@ NO_SLOT_KEYWORDS = [
     "均不可用",
     "都不可用",
     "没有可以预约",
+    "仅今天",           # 仅今天可选 = 无真正 slot
+    "只有今天",          # 只有今天可选
+    "仅当天",           # 仅当天可选
+    "只有当天",          # 只有当天可选
     # 法语
     "aucune réservation disponible",
     "aucun créneau disponible",
@@ -47,6 +51,24 @@ NO_SLOT_KEYWORDS = [
     "no appointment",
     "no reservation",
     "all disabled",
+    "only today",
+]
+
+
+# ============ "仅今天可选"误报检测模式 ============
+# 网站总是让"今天"可选（不 disabled），但实际无 slot
+# 匹配类似："仅今天（3月10日）可选，但无可用预约" 或 "只有今天可选"
+ONLY_TODAY_PATTERNS = [
+    r"仅.{0,6}今天.{0,10}可选",
+    r"只有.{0,6}今天.{0,10}可选",
+    r"仅.{0,6}当天.{0,10}可选",
+    r"只有.{0,6}当天.{0,10}可选",
+    r"today.{0,15}(only|sole|selectable)",
+    r"(only|sole).{0,15}today.{0,15}selectable",
+    r"可选日期.{0,6}(仅|只有).{0,6}今天",
+    r"可选日期.{0,6}(仅|只有).{0,6}当天",
+    # 匹配 "其他日期：全部被禁用" + "可选日期：仅...今天" 组合
+    r"其他日期.{0,6}(全部|均|都).{0,6}禁用",
 ]
 
 
@@ -108,24 +130,52 @@ def send_email(subject, body, image_paths=None):
         print(f"❌ 邮件发送失败: {e}")
 
 
+def is_only_today_selectable(output):
+    """
+    检测 LLM 输出中是否包含"仅今天可选"的模式。
+    网站总是让今天的日期可选（不 disabled），但这不代表有真正的 slot。
+    如果输出描述了"仅今天可选"或"其他日期全部禁用"，则认为无可用 slot。
+    """
+    text = output.lower()
+    for pattern in ONLY_TODAY_PATTERNS:
+        if re.search(pattern, text):
+            print(f"  🔍 检测到'仅今天可选'模式: \"{pattern}\"")
+            return True
+    return False
+
+
 def has_available_slot(output):
     """
     判断 LLM 输出中是否有可用 slot。
     提取"结论"或"结果"部分来判断，避免被中间描述误导。
     支持结论在同一行或下一行的情况。
+
+    新增：检测"仅今天可选"模式——网站总是让今天可选但实际无 slot。
     """
+    # === 第一步：检测"仅今天可选"误报（全文检测） ===
+    if is_only_today_selectable(output):
+        print("  ℹ️  判定为'仅今天可选'误报，视为无可用 slot")
+        return False
+
     lines = output.split("\n")
     conclusion_text = ""
 
     # 提取"结论"和"结果"相关行及其后续内容
     for i, line in enumerate(lines):
         if "结论" in line or "结果" in line:
-            # 收集当前行 + 后续非空行（直到遇到空行或新段落）
+            # 收集当前行 + 后续内容（跳过空行，直到遇到分隔符或新段落）
             conclusion_text += line + " "
-            for j in range(i + 1, min(i + 5, len(lines))):
-                if lines[j].strip() == "" or lines[j].startswith("截图") or lines[j].startswith("---"):
+            collected = 0
+            for j in range(i + 1, min(i + 15, len(lines))):
+                stripped = lines[j].strip()
+                if stripped.startswith("截图") or stripped.startswith("---"):
                     break
+                if stripped == "":
+                    continue  # 跳过空行，不停止收集
                 conclusion_text += lines[j] + " "
+                collected += 1
+                if collected >= 8:
+                    break
 
     if conclusion_text.strip():
         print(f"  📋 提取到结论/结果: {conclusion_text.strip()}")
