@@ -2,6 +2,8 @@
 
 Automatically monitors the French Embassy in Ireland's visa appointment system for available time slots and sends instant email notifications when one is found.
 
+注意：原始的跑用的是GLM-5， 如果你换成其他模型，跑完一轮以后模型输出的结果内容上面会有一定的差异，最好是通过LLM读一下你的这一轮跑完以后你使用的LLM的输出内容然后根据这个重新调整一下Python里面的关键词，可以显著降低误认为有slot的情况
+
 ## ✨ Features
 
 - **Automated Checking** — Uses `agent-browser` to simulate browser interactions and navigate the visa appointment page
